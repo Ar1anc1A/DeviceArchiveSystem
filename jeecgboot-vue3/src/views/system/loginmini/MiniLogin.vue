@@ -5,7 +5,7 @@
     <div class="aui-logo" v-if="!getIsMobile">
       <div>
         <h3>
-          <img :src="logoImg" alt="jeecg" />
+          <img :src="logoImg" class="left_item" alt="jeecg" /><span class="right_item">设备台账数字化平台</span>
         </h3>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <div class="aui-form">
             <div class="aui-image">
               <div class="aui-image-text">
-                <img :src="adTextImg" />
+                <!-- <img :src="adTextImg" /> -->
               </div>
             </div>
             <div class="aui-formBox">
@@ -27,9 +27,9 @@
                   <div class="aui-flex-box" :class="activeIndex === 'accountLogin' ? 'activeNav on' : ''" @click="loginClick('accountLogin')"
                     >{{ t('sys.login.signInFormTitle') }}
                   </div>
-                  <div class="aui-flex-box" :class="activeIndex === 'phoneLogin' ? 'activeNav on' : ''" @click="loginClick('phoneLogin')"
+                  <!-- <div class="aui-flex-box" :class="activeIndex === 'phoneLogin' ? 'activeNav on' : ''" @click="loginClick('phoneLogin')"
                     >{{ t('sys.login.mobileSignInFormTitle') }}
-                  </div>
+                  </div> -->
                 </div>
                 <div class="aui-form-box" style="height: 180px">
                   <a-form ref="loginRef" :model="formData" v-if="activeIndex === 'accountLogin'" @keyup.enter.native="loginHandleClick">
@@ -63,9 +63,9 @@
                             <span style="margin-left: 5px">{{ t('sys.login.rememberMe') }}</span>
                           </div>
                         </div>
-                        <div class="aui-forget">
+                        <!-- <div class="aui-forget">
                           <a @click="forgetHandelClick"> {{ t('sys.login.forgetPassword') }}</a>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </a-form>
@@ -91,22 +91,23 @@
                     <a-button :loading="loginLoading" class="aui-link-login" type="primary" @click="loginHandleClick">
                       {{ t('sys.login.loginButton') }}</a-button>
                   </div>
-                  <div class="aui-flex">
+                  <!-- <div class="aui-flex">
                     <a class="aui-linek-code aui-flex-box" @click="codeHandleClick">{{ t('sys.login.qrSignInFormTitle') }}</a>
                   </div>
                   <div class="aui-flex">
                     <a class="aui-linek-code aui-flex-box" @click="registerHandleClick">{{ t('sys.login.registerButton') }}</a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <a-form @keyup.enter.native="loginHandleClick">
                 <div class="aui-flex aui-third-text">
                   <div class="aui-flex-box aui-third-border">
-                    <span>{{ t('sys.login.otherSignIn') }}</span>
+                    <!-- <span>{{ t('sys.login.otherSignIn') }}</span> -->
+                    <span>系统运维联系方式</span>
                   </div>
                 </div>
-                <div class="aui-flex" :class="`${prefixCls}-sign-in-way`">
-                  <div class="aui-flex-box">
+                <!-- <div class="aui-flex" :class="`${prefixCls}-sign-in-way`"> -->
+                  <!-- <div class="aui-flex-box">
                     <div class="aui-third-login">
                       <a title="github" @click="onThirdLogin('github')"><GithubFilled /></a>
                     </div>
@@ -125,8 +126,8 @@
                     <div class="aui-third-login">
                       <a title="微信" @click="onThirdLogin('wechat_open')"><WechatFilled /></a>
                     </div>
-                  </div>
-                </div>
+                  </div> -->
+                <!-- </div> -->
               </a-form>
             </div>
           </div>
@@ -162,7 +163,7 @@
   import MiniForgotpad from './MiniForgotpad.vue';
   import MiniRegister from './MiniRegister.vue';
   import MiniCodelogin from './MiniCodelogin.vue';
-  import logoImg from '/@/assets/loginmini/icon/jeecg_logo.png';
+  import logoImg from '/@/assets/loginmini/icon/logo.png';
   import adTextImg from '/@/assets/loginmini/icon/jeecg_ad_text.png';
   import { AppLocalePicker, AppDarkModeToggle } from '/@/components/Application';
   import { useLocaleStore } from '/@/store/modules/locale';
@@ -437,6 +438,21 @@
 
   :deep(.ant-input:focus) {
     box-shadow: none;
+  }
+  .left_item {
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle; 
+  }
+  .right_item{
+    font-size: 30px;
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    vertical-align: middle;
   }
   .aui-get-code {
     float: right;
