@@ -183,6 +183,12 @@ export const columns: BasicColumn[] = [
     align:"center",
     dataIndex: 'innerAntisepticMeasure'
    },
+   {
+    title: '设备图片路径',
+    align:"center",
+    dataIndex: 'devicePicPath',
+    customRender:render.renderImage,
+   },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
@@ -198,6 +204,7 @@ export const formSchema: FormSchema[] = [
     label: '装置编号',
     field: 'deviceId',
     component: 'Input',
+    ifShow: false
   },
   {
     label: '容器类别',
@@ -364,6 +371,14 @@ export const formSchema: FormSchema[] = [
     field: 'innerAntisepticMeasure',
     component: 'Input',
   },
+  {
+    label: '设备图片路径',
+    field: 'devicePicPath',
+     component: 'JImageUpload',
+     componentProps:{
+        fileMax: 0
+      },
+  },
 	// TODO 主键隐藏字段，目前写死为ID
 	{
 	  label: '',
@@ -410,6 +425,7 @@ export const superQuerySchema = {
   safetyDeviceConstantValue: {title: '安全装置定压值',order: 32,view: 'text', type: 'string',},
   safetyDeviceQuantity: {title: '安全装置数量',order: 33,view: 'text', type: 'string',},
   innerAntisepticMeasure: {title: '内壁防腐措施',order: 34,view: 'text', type: 'string',},
+  devicePicPath: {title: '设备图片路径',order: 35,view: 'image', type: 'string',},
 };
 
 /**

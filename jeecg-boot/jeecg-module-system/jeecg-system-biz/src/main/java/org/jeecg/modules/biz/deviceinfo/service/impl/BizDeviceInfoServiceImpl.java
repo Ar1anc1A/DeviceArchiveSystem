@@ -1,8 +1,8 @@
-package org.jeecg.modules.biz.deviceinfo.service.impl;
+package org.jeecg.modules.demo.deviceinfo.service.impl;
 
-import org.jeecg.modules.biz.deviceinfo.entity.BizDeviceInfo;
-import org.jeecg.modules.biz.deviceinfo.mapper.BizDeviceInfoMapper;
-import org.jeecg.modules.biz.deviceinfo.service.IBizDeviceInfoService;
+import org.jeecg.modules.demo.deviceinfo.entity.BizDeviceInfo;
+import org.jeecg.modules.demo.deviceinfo.mapper.BizDeviceInfoMapper;
+import org.jeecg.modules.demo.deviceinfo.service.IBizDeviceInfoService;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 /**
  * @Description: 设备基础信息
  * @Author: jeecg-boot
- * @Date:   2024-06-27
+ * @Date:   2024-07-04
  * @Version: V1.0
  */
 @Service

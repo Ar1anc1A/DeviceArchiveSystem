@@ -1,4 +1,4 @@
-package org.jeecg.modules.biz.deviceinfo.controller;
+package org.jeecg.modules.demo.deviceinfo.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
-import org.jeecg.modules.biz.deviceinfo.entity.BizDeviceInfo;
-import org.jeecg.modules.biz.deviceinfo.service.IBizDeviceInfoService;
+import org.jeecg.modules.demo.deviceinfo.entity.BizDeviceInfo;
+import org.jeecg.modules.demo.deviceinfo.service.IBizDeviceInfoService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -40,7 +40,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
  /**
  * @Description: 设备基础信息
  * @Author: jeecg-boot
- * @Date:   2024-06-27
+ * @Date:   2024-07-04
  * @Version: V1.0
  */
 @Api(tags="设备基础信息")

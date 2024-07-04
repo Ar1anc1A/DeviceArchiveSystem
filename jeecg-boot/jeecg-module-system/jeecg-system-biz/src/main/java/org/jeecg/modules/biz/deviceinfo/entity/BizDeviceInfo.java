@@ -1,4 +1,4 @@
-package org.jeecg.modules.biz.deviceinfo.entity;
+package org.jeecg.modules.demo.deviceinfo.entity;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 设备基础信息
  * @Author: jeecg-boot
- * @Date:   2024-06-27
+ * @Date:   2024-07-04
  * @Version: V1.0
  */
 @Data
@@ -192,4 +192,8 @@ public class BizDeviceInfo implements Serializable {
 	@Excel(name = "内壁防腐措施", width = 15)
     @ApiModelProperty(value = "内壁防腐措施")
     private java.lang.String innerAntisepticMeasure;
+	/**设备图片路径*/
+	@Excel(name = "设备图片路径", width = 15)
+    @ApiModelProperty(value = "设备图片路径")
+    private java.lang.String devicePicPath;
 }
