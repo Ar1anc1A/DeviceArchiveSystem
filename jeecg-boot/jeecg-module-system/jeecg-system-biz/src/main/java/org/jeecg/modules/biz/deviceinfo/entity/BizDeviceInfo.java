@@ -21,7 +21,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 设备基础信息
  * @Author: jeecg-boot
- * @Date:   2024-07-04
+ * @Date:   2024-07-05
  * @Version: V1.0
  */
 @Data
@@ -196,4 +196,8 @@ public class BizDeviceInfo implements Serializable {
 	@Excel(name = "设备图片路径", width = 15)
     @ApiModelProperty(value = "设备图片路径")
     private java.lang.String devicePicPath;
+	/**备注*/
+	@Excel(name = "备注", width = 15)
+    @ApiModelProperty(value = "备注")
+    private java.lang.String deviceNote;
 }

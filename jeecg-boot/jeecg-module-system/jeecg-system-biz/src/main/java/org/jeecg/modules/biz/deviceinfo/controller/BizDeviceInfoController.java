@@ -1,4 +1,4 @@
-package org.jeecg.modules.demo.deviceinfo.controller;
+package org.jeecg.modules.biz.deviceinfo.controller;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +40,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
  /**
  * @Description: 设备基础信息
  * @Author: jeecg-boot
- * @Date:   2024-07-04
+ * @Date:   2024-07-05
  * @Version: V1.0
  */
 @Api(tags="设备基础信息")

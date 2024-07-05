@@ -189,6 +189,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'devicePicPath',
     customRender:render.renderImage,
    },
+   {
+    title: '备注',
+    align:"center",
+    dataIndex: 'deviceNote'
+   },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
@@ -379,6 +384,11 @@ export const formSchema: FormSchema[] = [
         fileMax: 0
       },
   },
+  {
+    label: '备注',
+    field: 'deviceNote',
+    component: 'Input',
+  },
 	// TODO 主键隐藏字段，目前写死为ID
 	{
 	  label: '',
@@ -426,6 +436,7 @@ export const superQuerySchema = {
   safetyDeviceQuantity: {title: '安全装置数量',order: 33,view: 'text', type: 'string',},
   innerAntisepticMeasure: {title: '内壁防腐措施',order: 34,view: 'text', type: 'string',},
   devicePicPath: {title: '设备图片路径',order: 35,view: 'image', type: 'string',},
+  deviceNote: {title: '备注',order: 36,view: 'text', type: 'string',},
 };
 
 /**
