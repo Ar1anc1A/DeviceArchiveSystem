@@ -33,6 +33,7 @@
     </BasicTable>
     <!-- 表单区域 -->
     <BizDeviceInfoModal @register="registerModal" @success="handleSuccess"></BizDeviceInfoModal>
+    <UserDrawer @register="registerDrawer"/>
   </div>
 </template>
 
@@ -40,16 +41,21 @@
   import {ref, reactive, computed, unref, watch} from 'vue';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
+  import { useDrawer } from '/@/components/Drawer';
   import { useListPage } from '/@/hooks/system/useListPage'
   import BizDeviceInfoModal from './components/BizDeviceInfoModal.vue'
   import {columns, searchFormSchema, superQuerySchema} from './BizDeviceInfo.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './BizDeviceInfo.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { useUserStore } from '/@/store/modules/user';
+  import UserDrawer from '/@/views/biz/deviceInfo/drawer/UserDrawer.vue';
   const queryParam = reactive<any>({});
   const checkedKeys = ref<Array<string | number>>([]);
   const userStore = useUserStore();
   //注册model
+  /** 编辑装置基础信息 */
+  //注册drawer
+  const [registerDrawer, { openDrawer, setDrawerProps }] = useDrawer();
   const [registerModal, {openModal}] = useModal();
   const props = defineProps({
     data: { require: true, type: Object },
@@ -178,7 +184,7 @@
   function getDropDownAction(record){
        return [
          {
-           label: '详情',
+           label: '详细参数查看',
            onClick: handleDetail.bind(null, record),
          }, {
            label: '删除',
@@ -187,6 +193,21 @@
              confirm: handleDelete.bind(null, record),
              placement: 'topLeft',
            }
+         }, {
+           label: '零件结构',
+           onClick: openDrawer,
+         }, {
+           label: '检修履历',
+           onClick: handleDetail.bind(null, record),
+         }, {
+           label: '检验检测',
+           onClick: handleDetail.bind(null, record),
+         }, {
+           label: '改造情况',
+           onClick: handleDetail.bind(null, record),
+         }, {
+           label: '设备附件',
+           onClick: handleDetail.bind(null, record),
          }
        ]
    }
