@@ -81,7 +81,7 @@ public class BizDeviceInfoController extends JeecgController<BizDeviceInfo, IBiz
 	 */
 	@AutoLog(value = "设备基础信息-添加")
 	@ApiOperation(value="设备基础信息-添加", notes="设备基础信息-添加")
-	@RequiresPermissions("deviceinfo:biz_device_info:add")
+//	@RequiresPermissions("deviceinfo:biz_device_info:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BizDeviceInfo bizDeviceInfo) {
 		bizDeviceInfoService.save(bizDeviceInfo);

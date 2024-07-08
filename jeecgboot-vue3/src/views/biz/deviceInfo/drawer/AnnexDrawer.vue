@@ -1,5 +1,11 @@
 <template>
-  <div>
+  <BasicDrawer
+    v-bind="$attrs"
+    @register="registerDrawer"
+    :showFooter="showFooter"
+    :width="adaptiveWidth"
+    destroyOnClose
+  >
     <!--引用表格-->
    <BasicTable @register="registerTable" :rowSelection="rowSelection">
      <!--插槽:table标题-->
@@ -32,46 +38,51 @@
       </template>
     </BasicTable>
     <!-- 表单区域 -->
-    <BizDeviceInfoModal @register="registerModal" @success="handleSuccess"></BizDeviceInfoModal>
-    <AnnexDrawer @register="registerDrawer"/>
-  </div>
+    <BizDeviceAnnexModal @register="registerModal" @success="handleSuccess"></BizDeviceAnnexModal>
+  </BasicDrawer>
 </template>
-
-<script lang="ts" name="deviceinfo-bizDeviceInfo" setup>
-  import {ref, reactive, computed, unref, watch} from 'vue';
+<script lang="ts" setup>
+  import { defineComponent, ref, computed, unref, useAttrs, reactive } from 'vue';
+  import { BasicForm, useForm } from '/@/components/Form/index';
+  import { BasicDrawer, useDrawerInner } from '/@/components/Drawer';
   import {BasicTable, useTable, TableAction} from '/@/components/Table';
   import {useModal} from '/@/components/Modal';
-  import { useDrawer } from '/@/components/Drawer';
   import { useListPage } from '/@/hooks/system/useListPage'
-  import BizDeviceInfoModal from './components/BizDeviceInfoModal.vue'
-  import {columns, searchFormSchema, superQuerySchema} from './BizDeviceInfo.data';
-  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './BizDeviceInfo.api';
+  import BizDeviceAnnexModal from '/@/views/biz/deviceAnnex/components/BizDeviceAnnexModal.vue'
+  import {columns, searchFormSchema, superQuerySchema} from '/@/views/biz/deviceAnnex/BizDeviceAnnex.data';
+  import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from '/@/views/biz/deviceAnnex/BizDeviceAnnex.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
   import { useUserStore } from '/@/store/modules/user';
-  import AnnexDrawer from '/@/views/biz/deviceInfo/drawer/AnnexDrawer.vue';
+  import {useDrawerAdaptiveWidth} from '/@/hooks/jeecg/useAdaptiveWidth'
+  const {adaptiveWidth} = useDrawerAdaptiveWidth()
   const queryParam = reactive<any>({});
   const checkedKeys = ref<Array<string | number>>([]);
   const userStore = useUserStore();
-  //注册model
-  /** 编辑装置基础信息 */
-  //注册drawer
-  const [registerDrawer, { openDrawer: openDeviceAnnexDrawer, setDrawerProps }] = useDrawer();
-  const [registerModal, {openModal}] = useModal();
-  const props = defineProps({
-    data: { require: true, type: Object },
+
+  // 声明Emits
+  const emit = defineEmits(['success', 'register']);
+  const attrs = useAttrs();
+  const isUpdate = ref(true);
+  const rowId = ref('');
+  const departOptions = ref([]);
+  // TODO [VUEN-527] https://www.teambition.com/task/6239beb894b358003fe93626
+  const showFooter = ref(true);
+  //装置ID
+  const deviceId = ref<String>('');
+  //表单赋值
+  const [registerDrawer, { setDrawerProps, closeDrawer }] = useDrawerInner(async (data) => {
+    // await resetFields();
+    deviceId.value = data.deviceId
+    showFooter.value = data?.showFooter ?? true;
+    setDrawerProps({ confirmLoading: false, showFooter: showFooter.value });
+    isUpdate.value = !!data?.isUpdate;
   });
-  // 当前选中的部门ID，可能会为空，代表未选择部门
-  const departId = computed(() => props.data?.id);
-
-  watch(
-    () => props.data,
-    () => reload()
-  );
-
+//注册model
+const [registerModal, {openModal}] = useModal();
   //注册table数据
   const { prefixCls,tableContext,onExportXls,onImportXls } = useListPage({
       tableProps:{
-           title: '设备基础信息',
+           title: '设备附件',
            api: list,
            columns,
            canResize:false,
@@ -90,12 +101,12 @@
                fixed:'right'
             },
             beforeFetch: (params) => {
-              params.deviceId = departId.value;
+              params.deviceId = deviceId.value;
               return Object.assign(params, queryParam);
             },
       },
        exportConfig: {
-            name:"设备基础信息",
+            name:"设备附件",
             url: getExportUrl,
             params: queryParam,
           },
@@ -106,18 +117,6 @@
   })
 
   const [registerTable, {reload},{ rowSelection, selectedRowKeys }] = tableContext
-
-  /**
-   * 打开设备附件抽屉
-   */
-   function handleOpenDeviceAnnexDrawer(record: Recordable) {
-    // checkDepartProgramRecord.value = toRaw(record)
-    openDeviceAnnexDrawer(true, {
-      deviceId: record.id,
-      // isUpdate: true,
-      // showFooter: true,
-    })
-  }
 
   // 高级查询配置
   const superQueryConfig = reactive(superQuerySchema);
@@ -136,7 +135,7 @@
     */
   function handleAdd() {
      openModal(true, {
-       deviceId: departId,
+       deviceId,
        isUpdate: false,
        showFooter: true,
      });
@@ -196,7 +195,7 @@
   function getDropDownAction(record){
        return [
          {
-           label: '详细参数查看',
+           label: '详情',
            onClick: handleDetail.bind(null, record),
          }, {
            label: '删除',
@@ -205,28 +204,10 @@
              confirm: handleDelete.bind(null, record),
              placement: 'topLeft',
            }
-         }, {
-           label: '零件结构',
-           onClick: handleOpenDeviceAnnexDrawer.bind(null, record),
-         }, {
-           label: '检修履历',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '检验检测',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '改造情况',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '设备附件',
-           onClick: handleDetail.bind(null, record),
          }
        ]
    }
-
-
 </script>
-
 <style scoped>
   :deep(.ant-picker),:deep(.ant-input-number){
     width: 100%;

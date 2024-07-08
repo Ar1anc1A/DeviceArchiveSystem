@@ -81,7 +81,7 @@ public class BizDeviceAnnexController extends JeecgController<BizDeviceAnnex, IB
 	 */
 	@AutoLog(value = "设备附件-添加")
 	@ApiOperation(value="设备附件-添加", notes="设备附件-添加")
-	@RequiresPermissions("deviceinfo:biz_device_annex:add")
+//	@RequiresPermissions("deviceinfo:biz_device_annex:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BizDeviceAnnex bizDeviceAnnex) {
 		bizDeviceAnnexService.save(bizDeviceAnnex);
