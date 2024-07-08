@@ -81,7 +81,7 @@ public class BizDeviceCheckTestController extends JeecgController<BizDeviceCheck
 	 */
 	@AutoLog(value = "检验检测-添加")
 	@ApiOperation(value="检验检测-添加", notes="检验检测-添加")
-	@RequiresPermissions("deviceinfo:biz_device_check_test:add")
+//	@RequiresPermissions("deviceinfo:biz_device_check_test:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BizDeviceCheckTest bizDeviceCheckTest) {
 		bizDeviceCheckTestService.save(bizDeviceCheckTest);
@@ -96,7 +96,7 @@ public class BizDeviceCheckTestController extends JeecgController<BizDeviceCheck
 	 */
 	@AutoLog(value = "检验检测-编辑")
 	@ApiOperation(value="检验检测-编辑", notes="检验检测-编辑")
-	@RequiresPermissions("deviceinfo:biz_device_check_test:edit")
+//	@RequiresPermissions("deviceinfo:biz_device_check_test:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BizDeviceCheckTest bizDeviceCheckTest) {
 		bizDeviceCheckTestService.updateById(bizDeviceCheckTest);
@@ -111,7 +111,7 @@ public class BizDeviceCheckTestController extends JeecgController<BizDeviceCheck
 	 */
 	@AutoLog(value = "检验检测-通过id删除")
 	@ApiOperation(value="检验检测-通过id删除", notes="检验检测-通过id删除")
-	@RequiresPermissions("deviceinfo:biz_device_check_test:delete")
+//	@RequiresPermissions("deviceinfo:biz_device_check_test:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bizDeviceCheckTestService.removeById(id);
@@ -126,7 +126,7 @@ public class BizDeviceCheckTestController extends JeecgController<BizDeviceCheck
 	 */
 	@AutoLog(value = "检验检测-批量删除")
 	@ApiOperation(value="检验检测-批量删除", notes="检验检测-批量删除")
-	@RequiresPermissions("deviceinfo:biz_device_check_test:deleteBatch")
+//	@RequiresPermissions("deviceinfo:biz_device_check_test:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bizDeviceCheckTestService.removeByIds(Arrays.asList(ids.split(",")));

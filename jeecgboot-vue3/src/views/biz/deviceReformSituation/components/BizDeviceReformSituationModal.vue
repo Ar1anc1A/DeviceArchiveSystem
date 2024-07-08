@@ -14,6 +14,7 @@
     const emit = defineEmits(['register','success']);
     const isUpdate = ref(true);
     const isDetail = ref(false);
+    const deviceId = ref('');
     //表单配置
     const [registerForm, {setProps,resetFields, setFieldsValue, validate}] = useForm({
         //labelWidth: 150,
@@ -28,6 +29,7 @@
         setModalProps({confirmLoading: false,showCancelBtn:!!data?.showFooter,showOkBtn:!!data?.showFooter});
         isUpdate.value = !!data?.isUpdate;
         isDetail.value = !!data?.showFooter;
+        if(!isUpdate.value) deviceId.value = data.deviceId;
         if (unref(isUpdate)) {
             //表单赋值
             await setFieldsValue({
@@ -43,6 +45,7 @@
     async function handleSubmit(v) {
         try {
             let values = await validate();
+            if(!isUpdate.value) values.deviceId = deviceId.value
             setModalProps({confirmLoading: true});
             //提交表单
             await saveOrUpdate(values, isUpdate.value);

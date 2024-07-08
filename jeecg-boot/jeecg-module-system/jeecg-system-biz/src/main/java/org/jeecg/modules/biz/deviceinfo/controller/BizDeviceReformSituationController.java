@@ -81,7 +81,7 @@ public class BizDeviceReformSituationController extends JeecgController<BizDevic
 	 */
 	@AutoLog(value = "改造情况-添加")
 	@ApiOperation(value="改造情况-添加", notes="改造情况-添加")
-	@RequiresPermissions("deviceinfo:biz_device_reform_situation:add")
+//	@RequiresPermissions("deviceinfo:biz_device_reform_situation:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BizDeviceReformSituation bizDeviceReformSituation) {
 		bizDeviceReformSituationService.save(bizDeviceReformSituation);
@@ -96,7 +96,7 @@ public class BizDeviceReformSituationController extends JeecgController<BizDevic
 	 */
 	@AutoLog(value = "改造情况-编辑")
 	@ApiOperation(value="改造情况-编辑", notes="改造情况-编辑")
-	@RequiresPermissions("deviceinfo:biz_device_reform_situation:edit")
+//	@RequiresPermissions("deviceinfo:biz_device_reform_situation:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BizDeviceReformSituation bizDeviceReformSituation) {
 		bizDeviceReformSituationService.updateById(bizDeviceReformSituation);
@@ -111,7 +111,7 @@ public class BizDeviceReformSituationController extends JeecgController<BizDevic
 	 */
 	@AutoLog(value = "改造情况-通过id删除")
 	@ApiOperation(value="改造情况-通过id删除", notes="改造情况-通过id删除")
-	@RequiresPermissions("deviceinfo:biz_device_reform_situation:delete")
+//	@RequiresPermissions("deviceinfo:biz_device_reform_situation:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bizDeviceReformSituationService.removeById(id);
@@ -126,7 +126,7 @@ public class BizDeviceReformSituationController extends JeecgController<BizDevic
 	 */
 	@AutoLog(value = "改造情况-批量删除")
 	@ApiOperation(value="改造情况-批量删除", notes="改造情况-批量删除")
-	@RequiresPermissions("deviceinfo:biz_device_reform_situation:deleteBatch")
+//	@RequiresPermissions("deviceinfo:biz_device_reform_situation:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bizDeviceReformSituationService.removeByIds(Arrays.asList(ids.split(",")));

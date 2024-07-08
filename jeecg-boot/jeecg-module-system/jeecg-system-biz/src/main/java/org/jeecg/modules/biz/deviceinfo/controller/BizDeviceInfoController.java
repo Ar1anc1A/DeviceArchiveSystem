@@ -96,7 +96,7 @@ public class BizDeviceInfoController extends JeecgController<BizDeviceInfo, IBiz
 	 */
 	@AutoLog(value = "设备基础信息-编辑")
 	@ApiOperation(value="设备基础信息-编辑", notes="设备基础信息-编辑")
-	@RequiresPermissions("deviceinfo:biz_device_info:edit")
+//	@RequiresPermissions("deviceinfo:biz_device_info:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BizDeviceInfo bizDeviceInfo) {
 		bizDeviceInfoService.updateById(bizDeviceInfo);
@@ -111,7 +111,7 @@ public class BizDeviceInfoController extends JeecgController<BizDeviceInfo, IBiz
 	 */
 	@AutoLog(value = "设备基础信息-通过id删除")
 	@ApiOperation(value="设备基础信息-通过id删除", notes="设备基础信息-通过id删除")
-	@RequiresPermissions("deviceinfo:biz_device_info:delete")
+//	@RequiresPermissions("deviceinfo:biz_device_info:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bizDeviceInfoService.removeById(id);
@@ -126,7 +126,7 @@ public class BizDeviceInfoController extends JeecgController<BizDeviceInfo, IBiz
 	 */
 	@AutoLog(value = "设备基础信息-批量删除")
 	@ApiOperation(value="设备基础信息-批量删除", notes="设备基础信息-批量删除")
-	@RequiresPermissions("deviceinfo:biz_device_info:deleteBatch")
+//	@RequiresPermissions("deviceinfo:biz_device_info:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bizDeviceInfoService.removeByIds(Arrays.asList(ids.split(",")));

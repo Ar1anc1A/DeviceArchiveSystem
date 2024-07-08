@@ -8,7 +8,8 @@ export const columns: BasicColumn[] = [
    {
     title: '装置编号',
     align:"center",
-    dataIndex: 'deviceId'
+    dataIndex: 'deviceId',
+    ifShow: false
    },
    {
     title: '名称',
@@ -66,6 +67,7 @@ export const formSchema: FormSchema[] = [
     label: '装置编号',
     field: 'deviceId',
     component: 'Input',
+    ifShow: false
   },
   {
     label: '名称',

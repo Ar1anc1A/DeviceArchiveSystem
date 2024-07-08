@@ -81,7 +81,7 @@ public class BizDeviceRepairHistoryController extends JeecgController<BizDeviceR
 	 */
 	@AutoLog(value = "装置检修履历-添加")
 	@ApiOperation(value="装置检修履历-添加", notes="装置检修履历-添加")
-	@RequiresPermissions("deviceinfo:biz_device_repair_history:add")
+//	@RequiresPermissions("deviceinfo:biz_device_repair_history:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BizDeviceRepairHistory bizDeviceRepairHistory) {
 		bizDeviceRepairHistoryService.save(bizDeviceRepairHistory);
@@ -96,7 +96,7 @@ public class BizDeviceRepairHistoryController extends JeecgController<BizDeviceR
 	 */
 	@AutoLog(value = "装置检修履历-编辑")
 	@ApiOperation(value="装置检修履历-编辑", notes="装置检修履历-编辑")
-	@RequiresPermissions("deviceinfo:biz_device_repair_history:edit")
+//	@RequiresPermissions("deviceinfo:biz_device_repair_history:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BizDeviceRepairHistory bizDeviceRepairHistory) {
 		bizDeviceRepairHistoryService.updateById(bizDeviceRepairHistory);
@@ -111,7 +111,7 @@ public class BizDeviceRepairHistoryController extends JeecgController<BizDeviceR
 	 */
 	@AutoLog(value = "装置检修履历-通过id删除")
 	@ApiOperation(value="装置检修履历-通过id删除", notes="装置检修履历-通过id删除")
-	@RequiresPermissions("deviceinfo:biz_device_repair_history:delete")
+//	@RequiresPermissions("deviceinfo:biz_device_repair_history:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bizDeviceRepairHistoryService.removeById(id);
@@ -126,7 +126,7 @@ public class BizDeviceRepairHistoryController extends JeecgController<BizDeviceR
 	 */
 	@AutoLog(value = "装置检修履历-批量删除")
 	@ApiOperation(value="装置检修履历-批量删除", notes="装置检修履历-批量删除")
-	@RequiresPermissions("deviceinfo:biz_device_repair_history:deleteBatch")
+//	@RequiresPermissions("deviceinfo:biz_device_repair_history:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bizDeviceRepairHistoryService.removeByIds(Arrays.asList(ids.split(",")));
