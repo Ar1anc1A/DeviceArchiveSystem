@@ -1,11 +1,11 @@
 <template>
   <a-row :class="['p-4', `${prefixCls}--box`]" :gutter="10">
-    <a-col :xl="6" :lg="8" :md="10" :sm="24" style="flex: 1">
+    <a-col :xl="5" :lg="7" :md="11" :sm="23" style="flex: 1">
       <a-card :bordered="false" style="height: 100%">
         <DepartTree @select="onTreeSelect" />
       </a-card>
     </a-col>
-    <a-col :xl="18" :lg="16" :md="14" :sm="24" style="flex: 1">
+    <a-col :xl="19" :lg="17" :md="15" :sm="25" style="flex: 1">
       <a-card :bordered="false" style="height: 100%">
         <a-tabs defaultActiveKey="user-info">
           <!-- <a-tab-pane tab="基本信息" key="base-info" forceRender>

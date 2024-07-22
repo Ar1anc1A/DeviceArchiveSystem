@@ -103,7 +103,7 @@
               ],
             },
            actionColumn: {
-               width: 120,
+               width: 280,
                fixed:'right'
             },
             beforeFetch: (params) => {
@@ -252,7 +252,19 @@
          {
            label: '编辑',
            onClick: handleEdit.bind(null, record),
-         }
+         },
+         {
+           label: '详情查看',
+           onClick: handleDetail.bind(null, record),
+         },
+        {
+           label: '删除',
+           popConfirm: {
+             title: '是否确认删除',
+             confirm: handleDelete.bind(null, record),
+             placement: 'topLeft',
+           }
+         },
        ]
    }
      /**
@@ -260,17 +272,7 @@
         */
   function getDropDownAction(record){
        return [
-         {
-           label: '详细参数查看',
-           onClick: handleDetail.bind(null, record),
-         }, {
-           label: '删除',
-           popConfirm: {
-             title: '是否确认删除',
-             confirm: handleDelete.bind(null, record),
-             placement: 'topLeft',
-           }
-         }, {
+          {
            label: '零件结构',
            onClick: handleOpenDevicePartDrawer.bind(null, record),
          }, {
