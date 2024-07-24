@@ -56,6 +56,10 @@ public class BizDeviceInfo implements Serializable {
 	@Excel(name = "设备名称", width = 15)
     @ApiModelProperty(value = "设备名称")
     private java.lang.String deviceName;
+    /**设备位号*/
+    @Excel(name = "设备位号", width = 15)
+    @ApiModelProperty(value = "设备位号")
+    private java.lang.String locationNumber;
 	/**装置编号*/
 	@Excel(name = "装置编号", width = 15)
     @ApiModelProperty(value = "装置编号")

@@ -8,191 +8,19 @@ export const columns: BasicColumn[] = [
    {
     title: '设备名称',
     align:"center",
-    dataIndex: 'deviceName'
+    dataIndex: 'deviceName',
    },
    {
-    title: '装置编号',
+    title: '设备位号',
     align:"center",
-    dataIndex: 'deviceId',
-    ifShow: false
+    dataIndex: 'locationNumber',
    },
    {
-    title: '容器类别',
-    align:"center",
-    dataIndex: 'containerCategory'
-   },
-   {
-    title: '容器图号',
-    align:"center",
-    dataIndex: 'containerDiagramNumber',
-    ifShow: false
-   },
-   {
-    title: '设计单位',
-    align:"center",
-    dataIndex: 'designCompany',
-    ifShow: false
-   },
-   {
-    title: '制造单位',
-    align:"center",
-    dataIndex: 'manufactureCompany'
-   },
-   {
-    title: '制造年月',
-    align:"center",
-    dataIndex: 'manufactureTime'
-   },
-   {
-    title: '出厂编号',
-    align:"center",
-    dataIndex: 'factoryNumber'
-   },
-   {
-    title: '安装单位',
-    align:"center",
-    dataIndex: 'installCompany'
-   },
-   {
-    title: '安装年月',
-    align:"center",
-    dataIndex: 'installTime'
-   },
-   {
-    title: '设计使用年限',
-    align:"center",
-    dataIndex: 'designYear'
-   },
-   {
-    title: '主体材质',
-    align:"center",
-    dataIndex: 'bodyMaterial'
-   },
-   {
-    title: '管程材质',
-    align:"center",
-    dataIndex: 'pipeMaterial'
-   },
-   {
-    title: '容器内径',
-    align:"center",
-    dataIndex: 'containerInnerDiameter'
-   },
-   {
-    title: '容器壁厚',
-    align:"center",
-    dataIndex: 'containerWallThickness'
-   },
-   {
-    title: '容器长(高)',
-    align:"center",
-    dataIndex: 'containerLengthHeight'
-   },
-   {
-    title: '容器换热面积',
-    align:"center",
-    dataIndex: 'containerHeatTransferArea'
-   },
-   {
-    title: '外壁防腐措施',
-    align:"center",
-    dataIndex: 'exteriorWallAntisepticMeasure'
-   },
-   {
-    title: '重量筒体',
-    align:"center",
-    dataIndex: 'weightCylinder'
-   },
-   {
-    title: '重量内件',
-    align:"center",
-    dataIndex: 'weightInternal'
-   },
-   {
-    title: '重量总重',
-    align:"center",
-    dataIndex: 'weightTotal'
-   },
-   {
-    title: '设计条件压力',
-    align:"center",
-    dataIndex: 'designConditionPressure'
-   },
-   {
-    title: '设计条件温度',
-    align:"center",
-    dataIndex: 'designConditionTemperature'
-   },
-   {
-    title: '操作条件压力',
-    align:"center",
-    dataIndex: 'operateConditionPressure'
-   },
-   {
-    title: '操作条件温度',
-    align:"center",
-    dataIndex: 'operateConditionTemperature'
-   },
-   {
-    title: '工艺介质',
-    align:"center",
-    dataIndex: 'processMedia'
-   },
-   {
-    title: '投入生产年月',
-    align:"center",
-    dataIndex: 'productionTime'
-   },
-   {
-    title: '检验时间外部',
-    align:"center",
-    dataIndex: 'checkTimeExterior'
-   },
-   {
-    title: '检验时间内部',
-    align:"center",
-    dataIndex: 'checkTimeInterior'
-   },
-   {
-    title: '检验时间全面',
-    align:"center",
-    dataIndex: 'checkTimeOverall'
-   },
-   {
-    title: '安全装置名称',
-    align:"center",
-    dataIndex: 'safetyDeviceName'
-   },
-   {
-    title: '安全装置规格型号',
-    align:"center",
-    dataIndex: 'safetyDeviceSpecification'
-   },
-   {
-    title: '安全装置定压值',
-    align:"center",
-    dataIndex: 'safetyDeviceConstantValue'
-   },
-   {
-    title: '安全装置数量',
-    align:"center",
-    dataIndex: 'safetyDeviceQuantity'
-   },
-   {
-    title: '内壁防腐措施',
-    align:"center",
-    dataIndex: 'innerAntisepticMeasure'
-   },
-   {
-    title: '设备图片路径',
+    title: '设备图片',
     align:"center",
     dataIndex: 'devicePicPath',
     customRender:render.renderImage,
-   },
-   {
-    title: '备注',
-    align:"center",
-    dataIndex: 'deviceNote'
+    ifShow: false
    },
 ];
 //查询数据
@@ -205,6 +33,11 @@ export const formSchema: FormSchema[] = [
     field: 'deviceName',
     component: 'Input',
   },
+  {
+    label: '装置位号',
+    field:"locationNumber",
+    component: 'Input',
+   },
   {
     label: '装置编号',
     field: 'deviceId',
