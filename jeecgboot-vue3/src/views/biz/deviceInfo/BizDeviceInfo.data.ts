@@ -25,6 +25,44 @@ export const columns: BasicColumn[] = [
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
+  {
+    field: 'deviceName',
+    component: 'JInput',
+    label: '设备名称',
+    // helpMessage: ['component模式'],
+    componentProps: ({ schema, tableAction, formActionType, formModel }) => {
+      const { reload } = tableAction
+      return {
+        onChange: (args) => {
+          if (args == 0) return
+          // console.log('change', args)
+          formActionType.setFieldsValue({ deviceName: args })
+          reload()
+          // or
+          // formModel.xxx='123'
+        },
+      }
+    },
+  },
+  {
+    field: 'locationNumber',
+    component: 'JInput',
+    label: '设备位号',
+    // helpMessage: ['component模式'],
+    componentProps: ({ schema, tableAction, formActionType, formModel }) => {
+      const { reload } = tableAction
+      return {
+        onChange: (args) => {
+          if (args == 0) return
+          // console.log('change', args)
+          formActionType.setFieldsValue({ locationNumber: args })
+          reload()
+          // or
+          // formModel.xxx='123'
+        },
+      }
+    },
+  },
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
@@ -234,42 +272,43 @@ export const formSchema: FormSchema[] = [
 // 高级查询数据
 export const superQuerySchema = {
   deviceName: {title: '设备名称',order: 0,view: 'text', type: 'string',},
-  deviceId: {title: '装置编号',order: 1,view: 'text', type: 'string',},
-  containerCategory: {title: '容器类别',order: 2,view: 'text', type: 'string',},
-  containerDiagramNumber: {title: '容器图号',order: 3,view: 'text', type: 'string',},
-  designCompany: {title: '设计单位',order: 4,view: 'text', type: 'string',},
-  manufactureCompany: {title: '制造单位',order: 5,view: 'text', type: 'string',},
-  manufactureTime: {title: '制造年月',order: 6,view: 'text', type: 'string',},
-  factoryNumber: {title: '出厂编号',order: 7,view: 'text', type: 'string',},
-  installCompany: {title: '安装单位',order: 8,view: 'text', type: 'string',},
-  installTime: {title: '安装年月',order: 9,view: 'text', type: 'string',},
-  designYear: {title: '设计使用年限',order: 10,view: 'number', type: 'number',},
-  bodyMaterial: {title: '主体材质',order: 11,view: 'text', type: 'string',},
-  pipeMaterial: {title: '管程材质',order: 12,view: 'text', type: 'string',},
-  containerInnerDiameter: {title: '容器内径',order: 13,view: 'number', type: 'number',},
-  containerWallThickness: {title: '容器壁厚',order: 14,view: 'number', type: 'number',},
-  containerLengthHeight: {title: '容器长(高)',order: 15,view: 'number', type: 'number',},
-  containerHeatTransferArea: {title: '容器换热面积',order: 16,view: 'number', type: 'number',},
-  exteriorWallAntisepticMeasure: {title: '外壁防腐措施',order: 17,view: 'text', type: 'string',},
-  weightCylinder: {title: '重量筒体',order: 18,view: 'number', type: 'number',},
-  weightInternal: {title: '重量内件',order: 19,view: 'number', type: 'number',},
-  weightTotal: {title: '重量总重',order: 20,view: 'number', type: 'number',},
-  designConditionPressure: {title: '设计条件压力',order: 21,view: 'number', type: 'number',},
-  designConditionTemperature: {title: '设计条件温度',order: 22,view: 'number', type: 'number',},
-  operateConditionPressure: {title: '操作条件压力',order: 23,view: 'number', type: 'number',},
-  operateConditionTemperature: {title: '操作条件温度',order: 24,view: 'number', type: 'number',},
-  processMedia: {title: '工艺介质',order: 25,view: 'text', type: 'string',},
-  productionTime: {title: '投入生产年月',order: 26,view: 'text', type: 'string',},
-  checkTimeExterior: {title: '检验时间外部',order: 27,view: 'text', type: 'string',},
-  checkTimeInterior: {title: '检验时间内部',order: 28,view: 'text', type: 'string',},
-  checkTimeOverall: {title: '检验时间全面',order: 29,view: 'text', type: 'string',},
-  safetyDeviceName: {title: '安全装置名称',order: 30,view: 'text', type: 'string',},
-  safetyDeviceSpecification: {title: '安全装置规格型号',order: 31,view: 'text', type: 'string',},
-  safetyDeviceConstantValue: {title: '安全装置定压值',order: 32,view: 'text', type: 'string',},
-  safetyDeviceQuantity: {title: '安全装置数量',order: 33,view: 'text', type: 'string',},
-  innerAntisepticMeasure: {title: '内壁防腐措施',order: 34,view: 'text', type: 'string',},
-  devicePicPath: {title: '设备图片路径',order: 35,view: 'image', type: 'string',},
-  deviceNote: {title: '备注',order: 36,view: 'text', type: 'string',},
+  locationNumber: {title: '设备位号',order: 1,view: 'text', type: 'string',},
+  // deviceId: {title: '装置编号',order: 1,view: 'text', type: 'string',},
+  // containerCategory: {title: '容器类别',order: 2,view: 'text', type: 'string',},
+  // containerDiagramNumber: {title: '容器图号',order: 3,view: 'text', type: 'string',},
+  // designCompany: {title: '设计单位',order: 4,view: 'text', type: 'string',},
+  // manufactureCompany: {title: '制造单位',order: 5,view: 'text', type: 'string',},
+  // manufactureTime: {title: '制造年月',order: 6,view: 'text', type: 'string',},
+  // factoryNumber: {title: '出厂编号',order: 7,view: 'text', type: 'string',},
+  // installCompany: {title: '安装单位',order: 8,view: 'text', type: 'string',},
+  // installTime: {title: '安装年月',order: 9,view: 'text', type: 'string',},
+  // designYear: {title: '设计使用年限',order: 10,view: 'number', type: 'number',},
+  // bodyMaterial: {title: '主体材质',order: 11,view: 'text', type: 'string',},
+  // pipeMaterial: {title: '管程材质',order: 12,view: 'text', type: 'string',},
+  // containerInnerDiameter: {title: '容器内径',order: 13,view: 'number', type: 'number',},
+  // containerWallThickness: {title: '容器壁厚',order: 14,view: 'number', type: 'number',},
+  // containerLengthHeight: {title: '容器长(高)',order: 15,view: 'number', type: 'number',},
+  // containerHeatTransferArea: {title: '容器换热面积',order: 16,view: 'number', type: 'number',},
+  // exteriorWallAntisepticMeasure: {title: '外壁防腐措施',order: 17,view: 'text', type: 'string',},
+  // weightCylinder: {title: '重量筒体',order: 18,view: 'number', type: 'number',},
+  // weightInternal: {title: '重量内件',order: 19,view: 'number', type: 'number',},
+  // weightTotal: {title: '重量总重',order: 20,view: 'number', type: 'number',},
+  // designConditionPressure: {title: '设计条件压力',order: 21,view: 'number', type: 'number',},
+  // designConditionTemperature: {title: '设计条件温度',order: 22,view: 'number', type: 'number',},
+  // operateConditionPressure: {title: '操作条件压力',order: 23,view: 'number', type: 'number',},
+  // operateConditionTemperature: {title: '操作条件温度',order: 24,view: 'number', type: 'number',},
+  // processMedia: {title: '工艺介质',order: 25,view: 'text', type: 'string',},
+  // productionTime: {title: '投入生产年月',order: 26,view: 'text', type: 'string',},
+  // checkTimeExterior: {title: '检验时间外部',order: 27,view: 'text', type: 'string',},
+  // checkTimeInterior: {title: '检验时间内部',order: 28,view: 'text', type: 'string',},
+  // checkTimeOverall: {title: '检验时间全面',order: 29,view: 'text', type: 'string',},
+  // safetyDeviceName: {title: '安全装置名称',order: 30,view: 'text', type: 'string',},
+  // safetyDeviceSpecification: {title: '安全装置规格型号',order: 31,view: 'text', type: 'string',},
+  // safetyDeviceConstantValue: {title: '安全装置定压值',order: 32,view: 'text', type: 'string',},
+  // safetyDeviceQuantity: {title: '安全装置数量',order: 33,view: 'text', type: 'string',},
+  // innerAntisepticMeasure: {title: '内壁防腐措施',order: 34,view: 'text', type: 'string',},
+  // devicePicPath: {title: '设备图片路径',order: 35,view: 'image', type: 'string',},
+  // deviceNote: {title: '备注',order: 36,view: 'text', type: 'string',},
 };
 
 /**

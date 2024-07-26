@@ -95,9 +95,10 @@
            showTableSetting: false,
            formConfig: {
               //labelWidth: 120,
-              // schemas: searchFormSchema,
-              autoSubmitOnEnter:true,
-              showAdvancedButton:true,
+              schemas: searchFormSchema,
+              autoSubmitOnEnter:false,
+              showAdvancedButton:false,
+              showSubmitButton:false,
               fieldMapToNumber: [
               ],
               fieldMapToTime: [
