@@ -21,11 +21,11 @@
               </a-button>
         </a-dropdown>
         <!-- 高级查询 -->
-        <super-query :config="superQueryConfig" @search="handleSuperQuery" />
+        <!--<super-query :config="superQueryConfig" @search="handleSuperQuery" />-->
       </template>
        <!--操作栏-->
       <template #action="{ record }">
-        <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
+        <TableAction :actions="getTableAction(record)"/>
       </template>
       <!--字段回显插槽-->
       <template v-slot:bodyCell="{ column, record, index, text }">
@@ -105,7 +105,7 @@
               ],
             },
            actionColumn: {
-               width: 280,
+               width: 400,
                fixed:'right'
             },
             beforeFetch: (params) => {
@@ -267,6 +267,22 @@
              placement: 'topLeft',
            }
          },
+         {
+           label: '零件结构',
+           onClick: handleOpenDevicePartDrawer.bind(null, record),
+         }, {
+           label: '检修履历',
+           onClick: handleOpenDeviceRepairHistoryDrawer.bind(null, record),
+         }, {
+           label: '检验检测',
+           onClick: handleOpenDeviceCheckTestDrawer.bind(null, record),
+         }, {
+           label: '改造情况',
+           onClick: handleOpenDeviceReformSituationDrawer.bind(null, record),
+         }, {
+           label: '设备附件',
+           onClick: handleOpenDeviceAnnexDrawer.bind(null, record),
+         }
        ]
    }
      /**

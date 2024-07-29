@@ -3,7 +3,7 @@
     v-bind="$attrs"
     @register="registerDrawer"
     :showFooter="showFooter"
-    :width="adaptiveWidth"
+    width=1000
     destroyOnClose
   >
     <!--引用表格-->

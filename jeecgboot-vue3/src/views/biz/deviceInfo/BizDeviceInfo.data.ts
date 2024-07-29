@@ -9,11 +9,19 @@ export const columns: BasicColumn[] = [
     title: '设备名称',
     align:"center",
     dataIndex: 'deviceName',
+    width: 100
    },
    {
     title: '设备位号',
     align:"center",
     dataIndex: 'locationNumber',
+    width: 100
+   },
+   {
+    title: '容器类别',
+    align:"center",
+    dataIndex: 'containerCategory',
+    width: 100
    },
    {
     title: '设备图片',
