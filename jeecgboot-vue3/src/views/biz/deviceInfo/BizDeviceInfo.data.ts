@@ -18,9 +18,9 @@ export const columns: BasicColumn[] = [
     width: 100
    },
    {
-    title: '容器类别',
+    title: '规格型号',
     align:"center",
-    dataIndex: 'containerCategory',
+    dataIndex: 'specificationModel',
     width: 100
    },
    {
@@ -82,6 +82,11 @@ export const formSchema: FormSchema[] = [
   {
     label: '装置位号',
     field:"locationNumber",
+    component: 'Input',
+   },
+   {
+    label: '规格型号',
+    field:"specificationModel",
     component: 'Input',
    },
   {
