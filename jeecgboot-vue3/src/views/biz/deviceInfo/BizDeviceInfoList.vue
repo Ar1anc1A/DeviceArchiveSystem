@@ -252,20 +252,8 @@
   function getTableAction(record){
        return [
          {
-           label: '编辑',
-           onClick: handleEdit.bind(null, record),
-         },
-         {
            label: '详情查看',
            onClick: handleDetail.bind(null, record),
-         },
-        {
-           label: '删除',
-           popConfirm: {
-             title: '是否确认删除',
-             confirm: handleDelete.bind(null, record),
-             placement: 'topLeft',
-           }
          },
          {
            label: '零件结构',
@@ -282,7 +270,17 @@
          }, {
            label: '设备附件',
            onClick: handleOpenDeviceAnnexDrawer.bind(null, record),
-         }
+         },{
+           label: '编辑',
+           onClick: handleEdit.bind(null, record),
+         },{
+           label: '删除',
+           popConfirm: {
+             title: '是否确认删除',
+             confirm: handleDelete.bind(null, record),
+             placement: 'topLeft',
+           }
+         },
        ]
    }
      /**
